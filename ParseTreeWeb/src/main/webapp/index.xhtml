@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Expression Tree Builder</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
+	<style type="text/css">
+body {
+	padding-top: 20px;
+	padding-bottom: 40px;
+}
+
+.hero-unit {
+	margin: 60px 0;
+	text-align: center;
+}
+
+.hero-unit h1 {
+	font-size: 72px;
+	line-height: 1;
+}
+
+.container p {
+	text-align: center;
+}
+</style>
+</h:head>
+
+<body>
+
+
+
+	<div class="hero-unit">
+		<h:form id="princForm" class="form-register">
+			<p:growl id="message" showDetail="true" sticky="true" />
+			<img src="img/logo.png"></img>
+			<p></p>
+			<label>Insert an Expression</label>
+			<div class="input-append">
+
+				<p:inputText styleClass="input-xlarge" id="appendedInputButton"
+					value="#{ShowTreePage.expression}" style="height:30px;" />
+				<p:commandButton value="Go!" id="ajax" update="@form"
+					action="#{ShowTreePage.parserExpression}"
+					styleClass="btn btn-primary btn-medium"
+					 />
+			</div>
+
+			<p:panel visible="#{ShowTreePage.noRaiz ne null}" id="panelTree"
+				width="100%" cellpadding="5px">
+				<p:tree id="tree" value="#{ShowTreePage.noRaiz}" var="node"
+					orientation="horizontal">
+					<p:treeNode id="treeNode">
+						<h:outputText value="#{node}" id="lblNode" />
+					</p:treeNode>
+				</p:tree>
+			</p:panel>
+
+
+		</h:form>
+
+		<br />
+	</div>
+
+
+
+
+
+	<div id="footer">
+		<div class="container">
+			<p class="muted credit">
+				Trabalho de Paradigmas de Linguagem de Computadores feito por <a
+					href="https://www.facebook.com/darlissonmar">Darlisson Marinho</a>
+				and <a href="https://www.facebook.com/lm25ttd">Leandro Bentes</a>.
+			</p>
+		</div>
+	</div>
+
+
+
+</body>
+</html>
